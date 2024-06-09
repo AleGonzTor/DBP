@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alejandro's cave</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">AOGT</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#" onclick="showSection('about')">Sobre Mí</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" onclick="showSection('projects')">Proyectos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" onclick="showSection('contact')">Contacto</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Header -->
+        <header class="jumbotron text-center">
+            <h1 class="display-4">Alejandro Oscar Gonzales Torres</h1>
+            <p class="lead">Estudiante y amante de la música.</p>
+        </header>
+
+        <!-- About Section -->
+        <section id="about" class="container section-content">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h2>Hola! Soy Alejandro</h2>
+                    <p>Soy estudiante de le escuela profesional de ciencia de la computación de la UNSA.<br>Mis principales hobbies son, los videojuegos, el cubo de Rubik y la música.</p>
+                </div>
+                <div class="col-lg-6">
+                    <img src="D:\Documentos\Tercer semestre\DBP\Laboratorio 5 PagPersonal\Dependencias\Perfil.jpeg" class="img-fluid" alt="Mi Imagen">
+                </div>
+            </div>
+            <div class="text-center my-4">
+                <button class="btn btn-primary" onclick="toggleGallery()">Ver Galería</button>
+            </div>
+            <div id="gallery" class="row" style="display: none;">
+                <div class="col-md-4">
+                    <img src="D:\Documentos\Tercer semestre\DBP\Laboratorio 5 PagPersonal\Dependencias\Música.jpg" class="img-fluid" alt="Foto 1">
+                </div>
+                <div class="col-md-4">
+                    <img src="D:\Documentos\Tercer semestre\DBP\Laboratorio 5 PagPersonal\Dependencias\Música.jpg" class="img-fluid" alt="Foto 2">
+                </div>
+                <div class="col-md-4">
+                    <img src="D:\Documentos\Tercer semestre\DBP\Laboratorio 5 PagPersonal\Dependencias\Música.jpg" class="img-fluid" alt="Foto 3">
+                </div>
+                <!-- Añade más fotos según sea necesario -->
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="container section-content">
+            <h2 class="text-center">Proyectos</h2>
+            <div class="row">
+                <!-- Project 1 -->
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="D:\Documentos\Tercer semestre\DBP\Laboratorio 5 PagPersonal\Dependencias\JuegoProcessing.png" class="card-img-top" alt="Proyecto 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Duck hunt en Processing</h5>
+                            <p class="card-text">Se realizó una especie de adaptación del clásico de la NES Duck Hunt para processing.</p>
+                            <a href="#project-detail" class="btn btn-primary" onclick="showProjectDetail('Duck hunt en Processing', 'Dependencias/JuegoProcessing.png', 'Descripción detallada del proyecto 1.', 'Dependencias/DuckHunt.txt')">Ver Más</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 2 -->
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="D:\Documentos\Tercer semestre\DBP\Laboratorio 5 PagPersonal\Dependencias\BrazoProcessing.jpeg" class="card-img-top" alt="Proyecto 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Articulaciones en Processing</h5>
+                            <p class="card-text">Una modificación a un código de ejemplo de Processing, y prueba de "keyPressed" como del movimiento del mouse.</p>
+                            <a href="#project-detail" class="btn btn-primary" onclick="showProjectDetail('Articulaciones en Processing', 'Dependencias/BrazoProcessing.jpeg', 'Descripción detallada del proyecto 2.', 'Dependencias/Brazo.txt')">Ver Más</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 3 -->
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="path/to/project3.jpg" class="card-img-top" alt="Proyecto 3">
+                        <div class="card-body">
+                            <h5 class="card-title">Proyecto 3</h5>
+                            <p class="card-text">Descripción breve del proyecto.</p>
+                            <a href="#project-detail" class="btn btn-primary" onclick="showProjectDetail('Proyecto 3', 'path/to/project3.jpg', 'Descripción detallada del proyecto 3.', 'path/to/code.txt')">Ver Más</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Detalle del Proyecto -->
+        <section id="project-detail" class="container section-content" style="display: none;">
+            <h2 class="text-center">Detalle del Proyecto</h2>
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 id="project-title"></h3>
+                    <img id="project-image" src="" alt="Imagen del Proyecto" class="img-fluid">
+                    <p id="project-description"></p>
+                    <!-- Contenedor para mostrar el código del proyecto -->
+                    <div id="codigo-contenedor"></div>
+                    <button class="btn btn-secondary" onclick="showSection('projects')">Volver a Proyectos</button>
+                </div>
+            </div>
+        </section>
+
+        
+        <!-- Contact Section -->
+        <section id="contact" class="container section-content" style="display: none;">
+            <h2 class="text-center">Contacto</h2>
+            <form>
+                <div class="form-group">
+                    <label for="name">Nombre</label>
+                    <input type="text" class="form-control" id="name" placeholder="Tu Nombre">
+                </div>
+                <div class="form-group">
+                    <label for="email">Correo Electrónico</label>
+                    <input type="email" class="form-control" id="email" placeholder="Tu Correo Electrónico">
+                </div>
+                <div class="form-group">
+                    <label for="message">Mensaje</label>
+                    <textarea class="form-control" id="message" rows="5" placeholder="Tu Mensaje"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-4">
+        <p>&copy; 2024 Alejandro Oscar Gonzales Torres. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

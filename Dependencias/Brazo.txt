@@ -1,0 +1,171 @@
+//brazo
+//definimos flotantes
+float x, y;
+float angle1 = 0.0;
+float angle2 = 0.0;
+float angle3 = 0.0;
+float angle4 = 0.0;
+float angle5 = 0.0;
+float angle6 = 0.0;
+float angle7 = 0.0;
+float angle8 = 0.0;
+float angle9 = 0.0;
+float angle10 = 0.0;
+float angle11 = 0.0;
+float angle12 = 0.0;
+float angle13 = 0.0;
+float angle14 = 0.0;
+float angle15 = 0.0;
+float angle16 = 0.0;
+float angle17 = 0.0;
+float angle18 = 0.0;
+float angle19 = 0.0;
+float segLength = 100;
+void setup() {
+ //fps
+ frameRate(165);
+ //punto central para controlar el brazo
+ stroke(255);
+ point(0,0);
+ size(1280, 720);
+ //grosor y color del brazo
+ strokeWeight(30);
+ stroke(255, 160);
+ //posicionamiento de el ancla del primer segmento
+ x = width * 0.15;
+ y = height * 0.50;
+}
+void draw() {
+ //el fondo esta en el void draw para que cada vez que se mueva el brazo el fondo siga ahi
+ background(0);
+ //grosor y color de los puntos
+ strokeWeight(5);
+ stroke(255);
+ //punto central
+ point(640,360);
+ //punto escalera
+ point(x-20,x/2);
+ //punto lupa
+ point((5*x)+30,(x/1.5)+18);
+ //punto de otra escalera
+ point((5*x),535);
+ //esquina superior derecha un "9"
+ //esquina inferior izquierda una D
+ //esquinas restantes otras escaleras
+ //grosor y color del brazo
+ strokeWeight(30);
+ // Verifica las teclas apretadas para cambiar colores
+ if (keyPressed && key == '1') {
+ stroke(#FF0000);
+ }
+ if (keyPressed && key == '2') {
+ stroke(#FF00FF);
+ }
+ if (keyPressed && key == '3') {
+ stroke(#0000FF);
+ }
+ if (keyPressed && key == '4') {
+ stroke(#00FFFF);
+ }
+ if (keyPressed && key == '5') {
+ stroke(#00FF00);
+ }
+ if (keyPressed && key == '6') {
+ stroke(#FFFF00);
+ }
+ if (keyPressed && key == '7') {
+ stroke(#FF7F00);
+ }
+ if (keyPressed && key == '8') {
+ strokeWeight(30);
+ stroke(255, 160);
+ }
+ if (keyPressed && key == '0') {
+ stroke(#000000);
+ }
+ //movimiento del segmento 1
+angle1 = (mouseX/float(width) - 0.5) * -PI;
+ //movimiento del segmento 2
+ angle2 = (mouseY/float(height) - 0.5) * PI;
+ //movimiento del segmento 3
+ angle3 = (mouseX/float(width) - 0.5) * PI;
+ //movimiento del segmento 4
+ angle4 = (mouseY/float(height) - 0.5) * -PI;
+ //movimiento del segmento 5
+ angle5 = (mouseX/float(width) - 0.5) * PI;
+ //movimiento del segmento 6
+ angle6 = (mouseY/float(height) - 0.5) * -PI;
+ //movimiento del segmento 7
+ angle7 = (mouseX/float(width) - 0.5) * PI;
+ //movimiento del segmento 8
+ angle8 = (mouseY/float(height) - 0.5) * -PI;
+ //movimiento del segmento 9
+ angle9 = (mouseX/float(width) - 0.5) * PI;
+ //movimiento del segmento 10
+ angle10 = (mouseY/float(height) - 0.5) * -PI;
+ //movimiento del segmento 11
+ angle11 = (mouseX/float(width) - 0.5) * -PI;
+ //movimiento del segmento 12
+ angle12 = (mouseY/float(height) - 0.5) * PI;
+ //movimiento del segmento 13
+ angle13 = (mouseX/float(width) - 0.5) * PI;
+ //movimiento del segmento 14
+ angle14 = (mouseY/float(height) - 0.5) * -PI;
+ //movimiento del segmento 15
+ angle15 = (mouseX/float(width) - 0.5) * PI;
+ //movimiento del segmento 16
+ angle16 = (mouseY/float(height) - 0.5) * -PI;
+ //movimiento del segmento 17
+ angle17 = (mouseX/float(width) - 0.5) * PI;
+ //movimiento del segmento 18
+ angle18 = (mouseY/float(height) - 0.5) * -PI;
+ //movimiento del segmento 19
+ angle19 = (mouseX/float(width) - 0.5) * PI;
+ pushMatrix();
+ //segmento 1
+ segment(x, y, angle1);
+ //segmento 2
+ segment(segLength, 0, angle2);
+ //segmento 3
+ segment(segLength, 0, angle3);
+ //segmento 4
+ segment(segLength, 0, angle4);
+ //segmento 5
+ segment(segLength, 0, angle5);
+ //segmento 6
+ segment(segLength, 0, angle6);
+ //segmento 7
+ segment(segLength, 0, angle7);
+ //segmento 8
+ segment(segLength, 0, angle8);
+ if (keyPressed && key == '9') {
+ //segmento 9
+ segment(segLength, 0, angle9);
+ //segmento 10
+ segment(segLength, 0, angle10);
+ //segmento 11
+ segment(segLength, 0, angle11);
+ //segmento 12
+ segment(segLength, 0, angle12);
+ //segmento 13
+ segment(segLength, 0, angle13);
+ //segmento 14
+ segment(segLength, 0, angle14);
+ //segmento 15
+ segment(segLength, 0, angle15);
+ //segmento 16
+ segment(segLength, 0, angle16);
+ //segmento 17
+ segment(segLength, 0, angle17);
+ //segmento 18
+ segment(segLength, 0, angle18);
+ //segmento 19
+ segment(segLength, 0, angle19);
+ }
+ popMatrix();
+}
+void segment(float x, float y, float a) {
+ translate(x, y);
+ rotate(a);
+ line(0, 0, segLength, 0);
+}
