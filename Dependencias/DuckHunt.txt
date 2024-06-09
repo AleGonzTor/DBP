@@ -1,129 +1,125 @@
-//Configuramos variables
-//PImage para importar imagenes
-PImage bg;
-PImage obje;
-//Jugar para establecer cuando se esta jugando
-int Jugar = 1;
-//Para saber cuando se debe volver a dibujar el pato
-int Repinta = 1;
-//Tamaños de la imagen
-int TamanoX = 192;
-int TamanoY = 108;
-//Puntaje
-int Puntos = 0;
-//Para guardar la posición de la imagen
-int PosX = 0;
-int PosY = 0;
-//Para mostrar en cuanto tiempo terminaste el juego
-int Tiempomuerte;
-//Movimiento de la imagen
-float VelocidadX = 0;
-float VelocidadY = 0;
-//Configuramos el juego
-void setup ()
-{
- //Tamaño de la ventana
- size (1920,1080);
- background (255,255,255);
- //Crea una cruceta en el cursor del mouse
- cursor (CROSS);
- //Crea una variable on la imagen y cambia el tamaño
- bg = loadImage("./img/fondo.png");
- bg.resize(1920,1080);
- obje = loadImage("./img/Objetivo.png");
- obje.resize(TamanoX,TamanoY);
-}
-//void draw
-void draw ()
-{
- if ((Jugar == 1) && (Repinta == 1))
- {
- //Solo se ejecuta una vez hasta que la variable Repinta vuelva a ser 1
- //Esta funcion esta especificada más abajo
- DibujarFormas();
- //Establece el valor de la velocidad cada ronda
- VelocidadX=abs(VelocidadX)+(Puntos*0.25);
- VelocidadY=abs(VelocidadY)+(Puntos*0.25);
- }
- //Muestra primero el background y luego dibuja el pato encima
- image (bg,0,0);
- image (obje,PosX,PosY);
-
- //Da movimiento al pato
- PosX=floor(PosX+VelocidadX);
- PosY=floor(PosY+VelocidadY);
- //Hace que el pato rebote cuando llega a el borde de la pantalla
- if (PosX > 1727)
- {
- PosX=1727;
- VelocidadX=-1*VelocidadX;
- }
- if (PosX < 1)
- {
- PosX=1;
- VelocidadX=-1*VelocidadX;
- }
- if (PosY > 971)
- {
- PosY=971;
- VelocidadY=-1*VelocidadY;
- }
- if (PosY < 1)
- {
- PosY=1;
- VelocidadY=-1*VelocidadY;
- }
- //Crea el texto de la puntuación
- fill(255,0,0);
- textAlign(CENTER);
- textSize(18);
- text("PUNTOS: " + (Puntos),250,30);
- //Crea el texto del tiempo
- fill(255,0,0);
- textAlign(LEFT);
- textSize(18);
- text("TIEMPO: " + millis()/1000,20,30);
- if (Jugar == 0)
- {
- //Crea el texto arriba en la pantalla que perdiste
- fill(255,0,0);
- textAlign(RIGHT);
- textSize(18);
- text("GAME OVER: " + Puntos + " en " + Tiempomuerte + " segs
-",980,30);
- }
-}
-//Funciones
-//Dibujar formas
-void DibujarFormas ()
-{
- //Establece la posicion inicial aleatoria del pato
- PosX = floor(random(0,1728));
- PosY = floor(random(0,972));
- //Hace que una vez se establezca la posicion inicial no se vuelva a generar
-otra
- Repinta=0;
-}
-//disparo
-void mousePressed()
-{
- if (Jugar == 1)
- {
- if (Repinta == 0)
- {
- Repinta=1;
- }
- //Hace que si haces click cerca del pato sume puntos
- if ((mouseX > PosX) && (mouseX < PosX+TamanoX) && (mouseY > PosY)
-&& (mouseY < PosY+TamanoY))
- {
- Puntos+=1;
- }
- else
- {
- //Si no le das al pato pierdes
- Jugar=0;
- Tiempomuerte=millis()/1000;
- }
- }
+//Configuramos variables<br>
+//PImage para importar imagenes<br>
+PImage bg;<br>
+PImage obje;<br>
+//Jugar para establecer cuando se esta jugando<br>
+int Jugar = 1;<br>
+//Para saber cuando se debe volver a dibujar el pato<br>
+int Repinta = 1;<br>
+//Tamaños de la imagen<br>
+int TamanoX = 192;<br>
+int TamanoY = 108;<br>
+//Puntaje<br>
+int Puntos = 0;<br>
+//Para guardar la posición de la imagen<br>
+int PosX = 0;<br>
+int PosY = 0;<br>
+//Para mostrar en cuanto tiempo terminaste el juego<br>
+int Tiempomuerte;<br>
+//Movimiento de la imagen<br>
+float VelocidadX = 0;<br>
+float VelocidadY = 0;<br>
+//Configuramos el juego<br>
+void setup ()<br>
+{<br>
+ //Tamaño de la ventana<br>
+ size (1920,1080);<br>
+ background (255,255,255);<br>
+ //Crea una cruceta en el cursor del mouse<br>
+ cursor (CROSS);<br>
+ //Crea una variable on la imagen y cambia el tamaño<br>
+ bg = loadImage("./img/fondo.png");<br>
+ bg.resize(1920,1080);<br>
+ obje = loadImage("./img/Objetivo.png");<br>
+ obje.resize(TamanoX,TamanoY);<br>
+}<br>
+//void draw<br>
+void draw ()<br>
+{<br>
+ if ((Jugar == 1) && (Repinta == 1))<br>
+ {<br>
+ //Solo se ejecuta una vez hasta que la variable Repinta vuelva a ser 1<br>
+ //Esta funcion esta especificada más abajo<br>
+ DibujarFormas();<br>
+ //Establece el valor de la velocidad cada ronda<br>
+ VelocidadX=abs(VelocidadX)+(Puntos*0.25);<br>
+ VelocidadY=abs(VelocidadY)+(Puntos*0.25);<br>
+ }<br>
+ //Muestra primero el background y luego dibuja el pato encima<br>
+ image (bg,0,0);<br>
+ image (obje,PosX,PosY);<br>
+ //Da movimiento al pato<br>
+ PosX=floor(PosX+VelocidadX);<br>
+ PosY=floor(PosY+VelocidadY);<br>
+ //Hace que el pato rebote cuando llega a el borde de la pantalla<br>
+ if (PosX > 1727)<br>
+ {<br>
+ PosX=1727;<br>
+ VelocidadX=-1*VelocidadX;<br>
+ }<br>
+ if (PosX < 1)<br>
+ {<br>
+ PosX=1;<br>
+ VelocidadX=-1*VelocidadX;<br>
+ }<br>
+ if (PosY > 971)<br>
+ {<br>
+ PosY=971;<br>
+ VelocidadY=-1*VelocidadY;<br>
+ }<br>
+ if (PosY < 1)<br>
+ {<br>
+ PosY=1;<br>
+ VelocidadY=-1*VelocidadY;<br>
+ }<br>
+ //Crea el texto de la puntuación<br>
+ fill(255,0,0);<br>
+ textAlign(CENTER);<br>
+ textSize(18);<br>
+ text("PUNTOS: " + (Puntos),250,30);<br>
+ //Crea el texto del tiempo<br>
+ fill(255,0,0);<br>
+ textAlign(LEFT);<br>
+ textSize(18);<br>
+ text("TIEMPO: " + millis()/1000,20,30);<br>
+ if (Jugar == 0)<br>
+ {<br>
+ //Crea el texto arriba en la pantalla que perdiste<br>
+ fill(255,0,0);<br>
+ textAlign(RIGHT);<br>
+ textSize(18);<br>
+ text("GAME OVER: " + Puntos + " en " + Tiempomuerte + " segs<br>",980,30);<br>
+ }<br>
+}<br>
+//Funciones<br>
+//Dibujar formas<br>
+void DibujarFormas ()<br>
+{<br>
+ //Establece la posicion inicial aleatoria del pato<br>
+ PosX = floor(random(0,1728));<br>
+ PosY = floor(random(0,972));<br>
+ //Hace que una vez se establezca la posicion inicial no se vuelva a generar otra<br>
+ Repinta=0;<br>
+}<br>
+//disparo<br>
+void mousePressed()<br>
+{<br>
+ if (Jugar == 1)<br>
+ {<br>
+ if (Repinta == 0)<br>
+ {<br>
+ Repinta=1;<br>
+ }<br>
+ //Hace que si haces click cerca del pato sume puntos<br>
+ if ((mouseX > PosX) && (mouseX < PosX+TamanoX) && (mouseY > PosY) && (mouseY < PosY+TamanoY))<br>
+ {<br>
+ Puntos+=1;<br>
+ }<br>
+ else<br>
+ {<br>
+ //Si no le das al pato pierdes<br>
+ Jugar=0;<br>
+ Tiempomuerte=millis()/1000;<br>
+ }<br>
+ }<br>
 }
