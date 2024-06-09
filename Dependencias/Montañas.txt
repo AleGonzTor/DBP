@@ -1,0 +1,83 @@
+int a;
+int b;
+void setup() 
+{
+  size(800, 800);
+  background(#67BCE3); 
+  //riscos
+  fill(#2F3C71);
+  noStroke();
+  quad(0,300,800,300,800,700,0,700);
+  //parte baja
+  fill(#0B143E);
+  noStroke();
+  quad(0,500,800,500,800,800,0,800);
+  //costados
+  fill(#0B143E);
+  noStroke();
+  ellipse(0,800,800,800);
+  ellipse(800,800,800,800);
+  //montañas grandes
+  fill(#5F295A);
+  noStroke();
+  triangle(-200,300,50,150,300,300);
+  fill(#5F295A);
+  noStroke();
+  triangle(500,300,750,150,1000,300);
+  fill(#403989);
+  noStroke();
+  triangle(100,300,250,100,400,300);
+  fill(#403989);
+  noStroke();
+  triangle(400,300,550,100,700,300);
+  fill(#5045B4);
+  noStroke();
+  triangle(200,300,400,50,600,300);
+  //sol
+  fill(#F1F798);
+  noStroke();
+  ellipse(500,100,50,50);
+  //nubes
+  fill(#FFFFFF);
+  noStroke();
+  ellipse(0,200,200,50);
+  ellipse(200,230,200,50);
+  ellipse(400,200,200,50);
+  ellipse(600,230,200,50);
+  ellipse(800,200,200,50);
+  //cabaña arquitectura moderna
+  stroke(103,74,47);
+  strokeWeight(3);
+  line(370,500,375,470);
+  line(395,500,390,470);
+  line(405,500,400,470);
+  fill(#5A4028);
+  quad(375,470,390,470,390,460,375,460);
+  quad(390,470,400,470,400,460,390,460);
+  triangle(376,459,382,453,390,460);
+  triangle(390,460,382,453,400,460);
+}
+void draw() 
+{
+  //primeras montañas
+  fill(#8A7BF0);
+  noStroke();
+  triangle(a-100,300,a,200,a+100,300);
+  a=(a+100);
+  //arboles 
+  fill(#0B143E);
+  noStroke();
+  triangle(b,500,b+16,480,b+30,500);
+//b=(b+50);
+  fill(#0B143E);
+  noStroke();
+  triangle(b,495,b+16,485,b+30,495);
+  fill(#0B143E);
+  noStroke();
+  triangle(b,485,b+16,475,b+30,485);
+  fill(#0B143E);
+  noStroke();
+  triangle(b,480,b+16,470,b+30,480);
+  b=(b+50);
+ 
+}
