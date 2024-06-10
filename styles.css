@@ -1,62 +1,83 @@
-html, body {
-    height: 100%;
-    margin: 0;
-}
-
-body {
-    display: flex;
-    flex-direction: column;
-}
-
-main {
-    flex: 1;
-}
-
-footer {
-    background-color: #f8f9fa;
-    padding: 1rem;
-    text-align: center;
-    margin-top: auto;
-}
-
-header.jumbotron {
-    background-color: #f8f9fa;
-    padding: 2rem 1rem;
-}
-
-section {
-    padding: 4rem 0;
-    display: none;
-}
-
-#gallery {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start; /* Alinear las imágenes a la izquierda */
-    gap: 1rem; /* Espacio entre las imágenes */
-}
-
-#gallery .col-md-4 {
-    flex: 1 1 calc(33.333% - 1rem); /* Tamaño de las imágenes */
-    box-sizing: border-box;
-    max-width: calc(33.333% - 1rem); /* Ancho máximo de las imágenes */
-}
-
-#gallery img {
-    width: 100%;
-    height: auto;
-    display: block;
+:root {
+    --color-1: #D7D9D9; /* Color predominante neutro */
+    --color-2: #8C7561; /* Color acento relacionado con la madera */
+    --color-3: #A69485; /* Color neutro suave */
+    --color-4: #8C5332; /* Color acento oscuro */
+    --color-5: #261911; /* Color oscuro */
 }
 
 body {
     font-family: 'Arial', sans-serif;
+    color: var(--color-5);
+    background-color: var(--color-1);
 }
 
-section.active {
-    display: block;
+.navbar {
+    background-color: var(--color-3);
 }
 
-#codigo-contenedor{
-    background-color: black;
-    color: white;
+.navbar-brand, .nav-link {
+    color: var(--color-5) !important;
+}
+
+.nav-link:hover {
+    color: var(--color-4) !important;
+}
+
+.jumbotron {
+    background-color: var(--color-2);
+    color: var(--color-1);
+}
+
+.section-content {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+h2, h3 {
+    color: var(--color-5);
+}
+
+.skill-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.card {
+    border: none;
+    background-color: var(--color-2);
+    color: var(--color-1);
+}
+
+.card-title {
+    color: var(--color-5);
+}
+
+.btn-primary {
+    background-color: var(--color-4);
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: var(--color-5);
+}
+
+.footer {
+    background-color: var(--color-2);
+    color: var(--color-1);
+    padding: 10px 0;
+}
+
+.form-control, .btn-secondary {
+    border-color: var(--color-4);
+}
+
+.btn-secondary {
+    color: var(--color-1);
+    background-color: var(--color-4);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-5);
 }
